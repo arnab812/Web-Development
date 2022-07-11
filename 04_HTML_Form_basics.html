@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>The &lt form &gt element is a container for different types of input elements, such as: text fields, checkboxes, radio buttons, submit buttons, etc.</p>
+    <h2>Elements in Form :-</h2>
+    <p>
+        The &lt input &gt Element. <br>
+        The HTML &lt input &gt element is the most used form element. <br>
+
+        An &lt input &gt element can be displayed in many ways, depending on the type attribute.
+    </p>
+    <p>
+        &nbsp;&nbsp;Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Description <br>
+        &lt input type="text" &gt &nbsp;&nbsp; Displays a single-line text input field <br>
+        &lt input type="radio" &gt &nbsp;&nbsp; Displays a radio button (for selecting one of many choices) <br>
+        &lt input type="checkbox" &gt &nbsp;&nbsp; Displays a checkbox (for selecting zero or more of many choices) <br>
+        &lt input type="submit" &gt	&nbsp;&nbsp; Displays a submit button (for submitting the form) <br>
+        &lt input type="button" &gt	&nbsp;&nbsp; Displays a clickable button <br>
+    </p>
+    <form>
+        <h2>Text Fields :-</h2>
+        <p>The &lt input type="text" &gt defines a single-line input field for text input.</p>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+
+        <h2>Radio Buttons :- </h2> 
+        <p>The &lt input type="radio" &gt defines a radio button.</p>
+
+        <p> Radio buttons let a user select ONE of a limited number of choices. </p> <br>
+        <input type="radio" id="html" name="fav_language" value="HTML">
+        <label for="html">HTML</label><br>
+        <input type="radio" id="css" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+
+        <h2>Checkboxes :- </h2>
+        <p> The &lt input type="checkbox" &gt defines a checkbox. </p>
+
+        Checkboxes let a user select ZERO or MORE options of a limited number of choices. <br>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label>
+
+        <h2>The Submit Button :- </h2> 
+        The &lt input type="submit" &gt defines a button for submitting the form data to a form-handler. <br>
+
+        The form-handler is typically a file on the server with a script for processing input data. <br>
+
+        The form-handler is specified in the form's action attribute. <br>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        <input type="submit" value="Submit">
+
+      </form>
+</body>
+</html>
