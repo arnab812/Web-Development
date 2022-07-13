@@ -1,0 +1,123 @@
+<!-- Tree representation -->
+<!DOCTYPE html> <!--root node / parent node-->
+<html lang="en">
+<head> <!--child node 1-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <!--child node 2-->
+    <!--
+    <p1>All the tags present in HTML are HTML elements</p1>
+    <p2>Child nodes under same parent node are called as siblings</p2>
+    -->
+
+    <ul>
+        <li>First element</li>
+        <li>Second element</li>
+        <li>Third element</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>Row 1 Coloumn 1</td>
+            <td>Row 1 Coloumn 2</td>
+        </tr>
+        <tr>
+            <td>Row 2 Coloumn 1</td>
+            <td>Row 2 Coloumn 2</td>
+        </tr>
+    </table>
+        
+    <script>
+        console.log("document : global variable that is attached with the window object in HTML");
+
+// Access the element nodes ->         
+
+        // root node : to get the root node -> 
+        console.log("document.documentElement"); // access the root node.
+
+        // Element node : an element is a node that's written using a tag in the HTML document.
+        // The root node is also an element node. 
+
+        // To accessing different element nodes of HTML -> 
+        console.log(document.head);
+        console.log(document.body);
+
+        // child nodes : 1. Differences between .childNodes & .children -> 
+        console.log(document.body.childNodes); // Output as -> NodeList 
+        // * What is text node in HTML ? 
+        console.log(document.body.children); // Output as -> HTMLCollection
+        // -> Output different objects. 
+
+        console.log("First child node of 'body' tag(element) -> ");
+        console.log(document.body.firstChild);
+        console.log("Last child node of 'body' tag(element) -> ");
+        console.log(document.body.lastChild);
+
+        // The above mentioned approachs are not able to get the exact(expected - <ul> & <script> ) element inside the body tag.
+        
+        console.log(document.body.firstElementChild);
+        console.log(document.body.lastElementChild);
+
+// Iterate the HTMLCollection -> 
+        console.log("Iterating the HTMLCollection");
+        for (node of document.body.children) { // instead of 'children', you can also use 'childNodes'
+            console.log(node);
+        }
+
+// ***** Converting an object to an array -> in case to use array methods in the object. 
+        const childrenOfBody = Array.from(document.body.children);
+        console.log(childrenOfBody); // Output in the form of an array.
+
+// Access siblings -> [previous sibling, next sibling]
+        const ulTag = document.body.children[0];
+        // There are differences between .nextSibling & .nextElementSibling
+        console.log(ulTag.nextSibling);
+        console.log(ulTag.nextElementSibling);
+
+        console.log("Elements of unordered list -> ");
+        const firstLi = ulTag.children[0]; // ulTag.firstChild
+        const secondLi = ulTag.children[1]; // ulTag.secondChild
+        const thirdLi = ulTag.children[2]; // ulTag.thirdChild
+
+        console.log(ulTag.children[0]);
+        console.log(ulTag.children[1]);
+        console.log(ulTag.children[2]);
+
+        console.log(secondLi.previousElementSibling.textContent);
+        console.log(firstLi.nextElementSibling.textContent);
+        console.log(secondLi.nextElementSibling.textContent);
+
+// ***** Table DOM Manipulation :-
+        console.log("Table DOM manipulation");
+        const tableTag = document.body.children[1];
+        console.log(tableTag.tBodies[0]); // Explore tBodies - 26:40 DOM Manipulation | Javascript | Web Development Course
+        // tbody : The <tbody> HTML element encapsulates a set of table rows ( <tr> elements), indicating that they comprise the body of the table ( <table> ).
+        console.log(tableTag.tBodies[0].rows);
+        console.log(tableTag.tBodies[0].rows[0].cells);
+
+        console.log(tableTag.tBodies[0].rows[0].cells[0].textContent);
+        console.log(tableTag.tBodies[0].rows[0].cells[1].textContent);
+        console.log(tableTag.tBodies[0].rows[1].cells[0].textContent);
+        console.log(tableTag.tBodies[0].rows[1].cells[1].textContent);
+
+// adding style :-
+        console.log(tableTag.tBodies[0].rows[0].cells[0].style = "background-color : yellow");
+        
+        // * We can directly access all the rows present in a 'table' tag ->
+        console.log(tableTag.rows);
+    
+    </script>
+
+
+</body>
+
+<!--
+    Important notes :-
+    1. HTMLCollection seems like an array, but is not an array. It is an object, seems like an array.
+       In the iteration purpose, you can use 'for-of' loop inside HTMLCollection.
+-->
+</html>
+
