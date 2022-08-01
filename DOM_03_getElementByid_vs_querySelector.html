@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="allDivs">First div</div>
+
+    <script>
+        const getAllDivs = document.getElementsByClassName("allDivs");
+        console.log(getAllDivs);
+
+        const queryAllDivs = document.querySelectorAll(".allDivs");
+        console.log(queryAllDivs);
+    </script>
+
+    <div class="allDivs">Second div</div>
+    <hr>
+    <p>
+        <b>"getElementsByClassName"</b> outputs <u>dynamic</u> results.
+    </p>
+    <p>
+        <b>"querySelectorAll"</b> outputs <u>static</u> results. 
+    </p>
+    <hr>
+    <p>
+        "getElementsByClassName" vs "querySelectorAll" :  <br>
+        => "getElementsByClassName" is dynamic in nature, can perform during the run-time.  <br>
+           "querySelectorAll"   is static in nature. [stores values at the first declaration time only] <br>
+
+        Output : "getElementsByClassName" : Outputs different HTMLCollections in console.log declared in different positions.
+             [performs operation & updates the values (dynamic allocation)] <br>
+             "querySelectorAll" : remain static. Do not update the values / act according to the number of times get declared. <br>
+             by console logging twice outputs the same result. (do not update the values dynamically) <br>
+    </p>
+    <script>
+        console.log(getAllDivs);
+        console.log(queryAllDivs);
+    </script>
+</body>
+
+<!-- 
+    "getElementsByClassName" vs "querySelectorAll" :
+    => 1. "getElementsByClassName" is dynamic in nature, can perform during the run-time. 
+           "querySelectorAll"   is static in nature. [stores values at the first declaration time only]
+
+        Output : "getElementsByClassName" : Outputs different HTMLCollections in console.log declared in different positions.
+             [performs operation & updates the values (dynamic allocation)]
+             "querySelectorAll" : remain static. Do not update the values / act according to the number of times get declared.
+             by console logging twice outputs the same result. (do not update the values dynamically)
+        
+       2. "getElementsByClassName" passes reference.
+          If you know that your data may get changed during the process and you are using multiple 'script' tags inside the HTML document ,
+          use getElement methods. 
+          "querySelectorAll" passes data only. 
+
+    44:58 on August 1, 2022.s 
+-->
+</html>
