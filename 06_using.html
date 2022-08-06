@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <!-- How to access attributes : -->
+    <!-- IDs & Classes are object elements (primitive in HTML)-->
+    <ul id="element" data="valid"> <!-- self made attribute - 'data'-->
+        <li>First element</li>
+        <li>Second element</li>
+        <li>Third element</li>
+    </ul>
+
+    <div id="vanish">
+        <h2>NULL</h2>
+        <h2>to be vanished</h2>
+    </div>
+
+    <script>
+        // trying to access the attribute 'data'  -
+        console.log(element.id); // output : element
+        console.log(element.data); // output : undefined 
+
+        // predefined HTML attributes are treated as object properties
+
+        // ***** the way to access user-defined attributes : 
+        console.log(element.getAttribute('data'));
+        
+        // set attribute, getAttribute, hasAttribute : 
+        console.log(element.setAttribute('order-placed', 'pending'));
+        console.log(element.getAttribute('order-placed'));
+        console.log(element.hasAttribute('order-placed')); // checks whether an attribute is present or not in the element, outputs in boolean form
+        console.log(element.removeAttribute('order-placed'));
+        console.log(element.getAttribute('order-placed'));
+
+        // to check all the attributes in an element :
+        console.log(element.attributes);
+
+        // -------------------------------------------------------------------------------------------------------------- //
+
+        // * Creating, updating and removing elements :
+        // elements that get created inside script tag, do not get added into DOM, can get returned in a form of a variable -
+        
+        const newDiv = document.createElement('div');
+        /*
+        // add the newly created element 'div' into DOM - append() : append adds an element at the end 
+        // adding a node to the newly crated 'div' tag :
+        const newText = document.createTextNode("JavaScript features 'Hoisting'"); // node creation 
+        newDiv.appendChild(newText); // 'newDiv' appends 'newText'
+        body.append(newDiv); // 'body' (id of the 'body' tag) appends the 'newDiv' tag
+
+        // prepend() : adds an element at the top 
+        body.prepend(newDiv);
+
+        // before() & after() : 
+        body.after(newDiv); // adds a tag after the 'body' tag
+        body.before(newDiv); // adds a tag before the 'body' tag
+
+        // replaceWith() :
+        // vanish.replaceWith(newDiv);
+
+        // remove()
+        vanish.remove();
+        */
+        newDiv.innerHTML = `<ul id="element" data="valid">
+        <li>First element</li>
+        <li>Second element</li>
+        <li>Third element</li>
+        </ul>`
+
+
+    </script>
+</body>
+</html>
