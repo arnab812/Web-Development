@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- getElementById -->    
+    <ul id="element">
+        <li class="list-item">First element</li>
+        <li class="list-item">Second element</li>
+        <li class="list-item">Third element</li>
+    </ul>
+
+    <p>
+    => There are 3 methods that can be used to properly loop through an HTMLCollection. <br>
+    1. Method 1: Using the for/of loop: The for/of loop is used to loop over values of an iterable object. <br>
+    2. Method 2: Using the Array.from() method to convert the HTMLCollection to an Array. <br>
+    3. Method 3: Using a normal for loop. <br>
+    </p>
+    <hr>
+
+    <p>
+        <h2>Array.from()</h2>
+        <p>
+        Array.from() is a static property of the JavaScript Array object. <br>
+        You can only use it as Array.from(). <br>
+        Using x.from(), where x is an array will return undefined. <br>
+
+        <h3>Return Value</h3> 
+        </p>
+        <table>
+                <tbody>
+                    <tr>
+                        <td><b>Type</b></td>
+                        <td><b>Description</b></td>
+                    </tr>
+                    <tr>
+                        <td>An array</td>
+                        <td>The values from the iterable object</td>
+                    </tr>
+                </tbody>
+        </table>
+    </p>
+
+    <hr>
+
+    <h2> => Differences between querySelector and getElementById : </h2>
+
+
+    <script>
+// DOM Manipulation with ID - searching with ID :-
+        console.log("1. commannd - console.log(element);"); 
+        console.log(element);
+        console.log("inner HTML : "+ document.getElementById("element").innerHTML);
+        console.log(".textContent : "+ document.getElementById("element").textContent);
+        console.log(".innerText : "+ document.getElementById("element").innerText);
+
+        // change style ->
+        // console.log(element.style.background = "yellow");
+
+// DOM Manipulation - getElementById :-
+        const ulTag = document.getElementById("element");
+        ulTag.style.backgroundColor = "Red";
+
+// DOM Manipulation - using class name :-
+        const listItem = document.getElementsByClassName("list-item");
+        console.log("2. command - console.log(listItem);");
+        console.log(listItem); // HTMLCollection
+
+        // * HTMLCollection to Array using Array.from() - 
+        console.log("forming an array using Array.from() : ");
+        const fromArray =  Array.from(listItem);
+        console.log(fromArray);
+
+        console.log("***** printing the array elements after converting the HTMLCollection into an array using Array.from() : ");
+        console.log(fromArray[0]);
+        console.log(fromArray[1]);
+        console.log(fromArray[2]);
+// * You can manipulate an element using it's tag name. e.g. - ul ->
+        console.log("getElementsByTagName");
+        console.log("console.log(document.getElementsByTagName('ul'));");
+        console.log("3. command  document.getElementsByTagName('ul')");
+        console.log(document.getElementsByTagName("ul")); 
+        let getElementsByTagName = document.getElementsByTagName("ul"); // return type - array
+        console.log(getElementsByTagName[0]);
+
+// querySelector -> 
+        // to get all the elements (e.g. list items) present in an element (e.g. unordered list) ->
+        const listItems = document.querySelector('.list-item'); // selects the first element only
+        const listItemsModified = document.querySelectorAll('.list-item'); // 'All' selects all the elements.
+
+// selecting ID in querySelector -> while selecting IDs do not use 'querySelectorAll', because IDs are unique : 
+        const selectIdInQuerySelector = document.querySelector('#element');
+
+// ***** To access the first to last child of a <li> of an <ul> -> [pseudo selectors in CSS] 
+        console.log("Accessing the first child of a <li> of an <ul> ");
+        const firstElement = document.querySelectorAll('ul > li:first-child');
+        console.log(firstElement[0].textContent);
+        /*
+        console.log("Accessing the second child of a <li> of an <ul> ");
+        const secondElement = document.querySelectorAll('ul > li:second-child');
+        console.log(secondElement[0].textContent);
+        */
+        console.log("Accessing the last child of a <li> of an <ul> ");
+        const listItemsLastElement = document.querySelectorAll('ul > li:last-child');
+        console.log(listItemsLastElement[0].textContent);
+        // ***** while accessing the in-between children of first and last child, an error got encountered.
+        // the in-between children can not be accessed like - ul > li:second-child', ul > li:third-child' and so on. 
+
+        // Therefore, the below approach is required -> 
+
+// access elements in terms of nth-child :-  
+        const listItemsFirstElement = document.querySelectorAll('ul > li:nth-child(1)');
+        const listItemsSecondElement = document.querySelectorAll('ul > li:nth-child(2)'); 
+        const listItemsThirdElement = document.querySelectorAll('ul > li:nth-child(3)');
+
+        console.log(listItemsFirstElement[0].textContent);
+        console.log(listItemsSecondElement[0].textContent);
+        console.log(listItemsThirdElement[0].textContent);
+    </script>
+</body>
+
+<!-- 
+    querySelector :- 
+    querySelectorAll returns a static node list, whereas (say) getElementsByTagName returns a live node list.
+    It's the list that's static or live, not the nodes/elements on the list.
+    An element returned by querySelector is the element in the DOM (as are the elements in the list from querySelectorAll ).
+
+    What type does querySelector return?
+    => The Document method querySelector() returns the first Element within the document that matches the specified selector, or group of selectors.
+       If no matches are found, null is returned.
+
+    Q. What are the differences between "textContent" and "innerText" ? 
+    "textContent" gets the content of all elements, including <script> and <style> elements.
+    "textContent" returns every element in the node.
+    "innerText" only shows “human-readable” elements.
+    "innerText" looks at styling and won't return the text of “hidden” elements.
+
+    => An HTMLCollection is not an Array!
+    An HTMLCollection may look like an array, but it is not.
+    You can loop through an HTMLCollection and refer to its elements with an index.
+    But you cannot use Array methods like push(), pop(), or join() on an HTMLCollection.
+
+    => There are 3 methods that can be used to properly loop through an HTMLCollection.
+    1. Method 1: Using the for/of loop: The for/of loop is used to loop over values of an iterable object.
+    2. Method 2: Using the Array.from() method to convert the HTMLCollection to an Array.
+    3. Method 3: Using a normal for loop.
+
+    Q. Does getElementsByTagName return an array ?
+    getElementsByTagName - the method name itself implies that it will return multiple elements - i.e. an array.
+    The method always returns an array, with the length equal to the number of matching elements.
+    As such you must always access the elements by the index of the element in the array.
+
+    => Differences between querySelector and getElementById :
+       Static vs Live
+-->
+</html>
